@@ -4,8 +4,8 @@ $name = $email = $password = '';
 // pr($_SERVER);
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_btn'])) {
     // pr($_POST);
-    $name = $_POST['name'];
-    $email = $_POST['email'];
+    $name = safe_input($_POST['name']);
+    $email = safe_input($_POST['email']);
     $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
 
     $sql = "INSERT INTO `users` (name,email,password) VALUES ('$name','$email','$password')";
@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save_btn'])) {
 <div class="container">
     <h1>Add New User</h1>
     <h2>Enter user details</h2>
-    <form action="users.create.php" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
         <div class="form-floating mb-3">
             <input type="text" class="form-control" id="name" name="name" placeholder="John Doe">
             <label for="name">Name</label>
