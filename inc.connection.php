@@ -12,10 +12,5 @@ $database = "my_db";
 // create connection
 $conn = mysqli_connect($hostname,$username,$password,$database);
 
-// check connection
-if(!$conn) {
-    die();
-}else {
-    // echo "$database is connected successfully!";
-}
+
 ?>

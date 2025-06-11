@@ -13,13 +13,7 @@ function prx ($data) {
 }
 
 function safe_input($data) {
-    $hostname = "localhost";
-    $username = "root";
-    $password = "";
-    $database = "my_db";
-
-    // create connection
-    $conn = mysqli_connect($hostname,$username,$password,$database);
+    global $conn; // Use the global connection variable
  
     $data = trim($data);
     $data = stripslashes($data);
